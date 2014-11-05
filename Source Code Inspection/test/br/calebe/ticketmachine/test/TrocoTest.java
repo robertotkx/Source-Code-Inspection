@@ -16,6 +16,29 @@ import org.junit.Test;
  */
 public class TrocoTest {
     
+    @Test (expected = Exception.class)
+    public void getIteratorTestIncorreto(){
+        
+        PapelMoeda[] papelMoedaList = new PapelMoeda[6];
+        papelMoedaList[5] = new PapelMoeda(-100, 0);
+        papelMoedaList[4] = new PapelMoeda(-50, 0);
+        papelMoedaList[3] = new PapelMoeda(-20, 0);
+        papelMoedaList[2] = new PapelMoeda(-10, 1);
+        papelMoedaList[1] = new PapelMoeda(-5, 0);
+        papelMoedaList[0] = new PapelMoeda(-2, 1);
+        
+        Troco troco = new Troco(12);
+        Iterator result = troco.getIterator();
+        while(result.hasNext()){
+            Object next = result.next();
+            System.out.println("QUANTIDADE - : " + ((PapelMoeda)next).getQuantidade());
+            System.out.println("VALOR - : " + ((PapelMoeda)next).getValor());
+        }
+    }
+    
+    /**
+     *
+     */
     @Test
     public void getIteratorTest(){
         
@@ -33,7 +56,6 @@ public class TrocoTest {
             Object next = result.next();
             System.out.println("QUANTIDADE - : " + ((PapelMoeda)next).getQuantidade());
             System.out.println("VALOR - : " + ((PapelMoeda)next).getValor());
-            
         }
     }
 }

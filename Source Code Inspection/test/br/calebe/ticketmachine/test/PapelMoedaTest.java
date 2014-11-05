@@ -16,6 +16,15 @@ import static org.junit.Assert.*;
  */
 public class PapelMoedaTest {
     
+    @Test (expected = Exception.class)
+    public void getValorTestIncorreto(){
+        PapelMoeda pm = new PapelMoeda(-5, 3);
+        int exResult = 5;
+        int result = pm.getValor();
+        
+        assertEquals(exResult, result);
+    }
+    
     @Test
     public void getValorTest(){
         PapelMoeda pm = new PapelMoeda(5, 3);
@@ -24,6 +33,17 @@ public class PapelMoedaTest {
         
         assertEquals(exResult, result);
     }
+    
+    @Test (expected = Exception.class)
+    public void getQuantidadeTestIncorreto(){
+        PapelMoeda pm = new PapelMoeda(-10, 3);
+        int exResult = 3;
+        int result = pm.getQuantidade();
+        
+        assertEquals(exResult, result);
+    
+    }
+    
 
     @Test
     public void getQuantidadeTest(){

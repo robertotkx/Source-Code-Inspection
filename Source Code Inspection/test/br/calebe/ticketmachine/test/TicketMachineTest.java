@@ -20,12 +20,29 @@ import static org.junit.Assert.*;
  */
 public class TicketMachineTest {
     
+    @Test (expected = Exception.class)
+    public void inserirPapelMoedaTestIncorretp() throws PapelMoedaInvalidaException{
+        TicketMachine tm = new TicketMachine(0);
+        tm.inserir(-100);
+        assertEquals(tm.getSaldo(), 100);
+   }
+    
     @Test
     public void inserirPapelMoedaTest() throws PapelMoedaInvalidaException{
         TicketMachine tm = new TicketMachine(0);
         tm.inserir(100);
         assertEquals(tm.getSaldo(), 100);
    }
+    
+    @Test (expected = Exception.class)
+    public void inserirReceberTrocoTestIncorreto() throws PapelMoedaInvalidaException{
+        TicketMachine tm = new TicketMachine(2);
+        System.out.println("Starting troco");
+        tm.inserir(-20);
+        boolean exResult = true;
+        boolean result = tm.getTroco();
+        assertEquals(exResult, result);
+    }
     
     @Test
     public void inserirReceberTrocoTest() throws PapelMoedaInvalidaException{
@@ -34,6 +51,16 @@ public class TicketMachineTest {
         tm.inserir(20);
         boolean exResult = true;
         boolean result = tm.getTroco();
+        assertEquals(exResult, result);
+    }
+    
+    @Test (expected = Exception.class)
+    public void solicitaBilheteTestIncorreto() throws PapelMoedaInvalidaException{
+        TicketMachine tm = new TicketMachine(2);
+        System.out.println("Starting Solicita Bilhete Test");
+        tm.inserir(-20);
+        String result = tm.solicitaBilhete(2);
+        String exResult = "Bilhetes comprados com sucesso!";
         assertEquals(exResult, result);
     }
     
@@ -47,6 +74,22 @@ public class TicketMachineTest {
         assertEquals(exResult, result);
     }
     
+    @Test (expected = Exception.class)
+    public void imprimeTestIncorreto() throws PapelMoedaInvalidaException, SaldoInsuficienteException{
+        TicketMachine tm = new TicketMachine(2);
+        System.out.println("Starting Imprime Test");
+        tm.inserir(-20);
+        String result = tm.imprimir();
+        String exResult = "Bilhetes comprados com sucesso!";
+        //assertEquals(exResult, result);
+        System.out.println(result);
+    }
+    
+    /**
+     *
+     * @throws PapelMoedaInvalidaException
+     * @throws SaldoInsuficienteException
+     */
     @Test
     public void imprimeTest() throws PapelMoedaInvalidaException, SaldoInsuficienteException{
         TicketMachine tm = new TicketMachine(2);
