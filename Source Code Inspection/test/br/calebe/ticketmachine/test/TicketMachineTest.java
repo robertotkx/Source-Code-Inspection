@@ -40,7 +40,7 @@ public class TicketMachineTest {
         System.out.println("Starting troco");
         tm.inserir(-20);
         boolean exResult = true;
-        boolean result = tm.getTroco();
+        Object result = tm.getTroco();
         assertEquals(exResult, result);
     }
     
@@ -50,7 +50,7 @@ public class TicketMachineTest {
         System.out.println("Starting troco");
         tm.inserir(20);
         boolean exResult = true;
-        boolean result = tm.getTroco();
+        Object result = tm.getTroco();
         assertEquals(exResult, result);
     }
     
