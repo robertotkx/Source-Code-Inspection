@@ -7,7 +7,7 @@ import br.calebe.ticketmachine.core.Troco;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-
+//Commit
 public class TicketMachine {
 
     protected int valor;
